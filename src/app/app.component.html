@@ -1,4 +1,6 @@
-<div class="bg-white text-black">
-  <app-navbar />
-  <app-landingpage />
-</div>
+<!--
+<app-navbar *ngIf="showHeader"></app-navbar> -->
+<!-- <app-navbar ></app-navbar> -->
+<main [class.with-header]="showHeader">
+  <router-outlet></router-outlet>
+</main>

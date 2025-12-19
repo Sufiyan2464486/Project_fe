@@ -19,17 +19,17 @@
     <ul class="flex items-center gap-6 md:gap-8">
       <li>
         <a
-          routerLink="/Signin"
+          routerLink="/signin"
           routerLinkActive="active-link"
           [routerLinkActiveOptions]="{ exact: true }"
-          class=""
+          class="nav-link"
         >
           Signin
         </a>
       </li>
       <li>
         <a
-          routerLink="/Signup"
+          routerLink="/signup"
           routerLinkActive="active-link"
           [routerLinkActiveOptions]="{ exact: true }"
           class="nav-link"
@@ -41,4 +41,6 @@
   </div>
 </nav>
 
+
+<router-outlet />
 

@@ -1,90 +1,69 @@
 
-import { Component, OnInit, Inject, Renderer2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { PLATFORM_ID } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-landingpage',
   standalone: true,
   imports: [CommonModule, RouterModule], // <-- NgIf, ng-template, routerLink
   templateUrl: './landingpage.component.html',
-  styleUrls: ['./landingpage.component.css']
+  styleUrls: ['./landingpage.component.css'],
 })
 export class LandingpageComponent implements OnInit {
-  // Footer year pinned to 2025
-  year = 2025;
+  roles = [
+    {
+      title: 'Employee',
+      icon: '👨‍💻',
+      description:
+        'Submit innovative ideas and collaborate with team members to improve organizational processes.',
+      features: [
+        '✓ Submit your ideas',
+        '✓ Vote on other ideas',
+        '✓ Discuss and collaborate',
+        '✓ Track idea progress',
+      ],
+      cta: 'Start as Employee',
+      route: '/signup',
+      color: '#3b82f6',
+    },
+    {
+      title: 'Manager',
+      icon: '👨‍💼',
+      description:
+        'Review, manage, and track ideas from your team members. Make decisions and drive innovation.',
+      features: [
+        '✓ Review all ideas',
+        '✓ Provide feedback',
+        '✓ Approve/reject ideas',
+        '✓ Team management',
+      ],
+      cta: 'Manage as Manager',
+      route: '/signup',
+      color: '#8b5cf6',
+    },
+    {
+      title: 'Administrator',
+      icon: '👨‍💼',
+      description:
+        'Have full control over the system. Manage users, categories, and system-wide settings.',
+      features: [
+        '✓ Full system access',
+        '✓ User management',
+        '✓ Custom categories',
+        '✓ Advanced analytics',
+      ],
+      cta: 'Manage as Admin',
+      route: '/signup',
+      color: '#ec4899',
+    },
+  ];
+  constructor(private router: Router) {}
 
-  // Dark mode state
-  isDark = false;
+  ngOnInit(): void {}
 
-  private isBrowser: boolean;
-  private rootEl: HTMLElement | null = null;
-
-  constructor(
-    private router: Router,
-    @Inject(DOCUMENT) private doc: Document,
-    @Inject(PLATFORM_ID) platformId: Object,
-    private renderer: Renderer2
-  ) {
-    this.isBrowser = isPlatformBrowser(platformId);
+  navigateTo(route: string): void {
+    this.router.navigate([route]);
   }
-
-  ngOnInit(): void {
-    // Work only in browser
-    if (this.isBrowser) {
-      this.rootEl = this.doc.documentElement;
-
-      const stored = this.safeGet('theme'); // 'dark' | 'light' | null
-      if (stored === 'dark') {
-        this.enableDark(true);
-      } else if (stored === 'light') {
-        this.enableDark(false);
-      } else {
-        const prefersDark = !!window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-        this.enableDark(prefersDark);
-      }
-    }
-  }
-
-  toggleDarkMode(): void {
-    this.enableDark(!this.isDark);
-    if (this.isBrowser) {
-      this.safeSet('theme', this.isDark ? 'dark' : 'light');
-    }
-  }
-
-  private enableDark(enable: boolean): void {
-    this.isDark = enable;
-    if (this.isBrowser && this.rootEl) {
-      if (enable) {
-        this.renderer.addClass(this.rootEl, 'dark');
-      } else {
-        this.renderer.removeClass(this.rootEl, 'dark');
-      }
-    }
-  }
-
-  private safeGet(key: string): string | null {
-    try {
-      return window?.localStorage?.getItem?.(key) ?? null;
-    } catch {
-      return null;
-    }
-  }
-
-  private safeSet(key: string, value: string): void {
-    try {
-      window?.localStorage?.setItem?.(key, value);
-    } catch {
-      // ignore write errors (private mode / SSR)
-    }
-  }
-
-  // Navigation handlers
-  onGetStarted(): void { this.router.navigate(['/ideas/new']); }
-  onExplore(): void    { this.router.navigate(['/ideas']); }
-  onLogin(): void      { this.router.navigate(['/auth/login']); }
-  onContact(): void    { this.router.navigate(['/support/contact']); }
-  onPrivacy(): void    { this.router.navigate(['/legal/privacy']); }
 }

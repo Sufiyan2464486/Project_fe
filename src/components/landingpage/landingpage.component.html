@@ -1,148 +1,244 @@
 
-<!-- Monochromatic landing page with subtle accent + dark mode toggle -->
-<div class="mt-8 min-h-screen bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
-  <!-- Header -->
+  <!-- Navigation Bar -->
+  <nav
+  class="sticky top-4 z-50 mx-auto max-w-6xl
+         rounded-full p-2
+         bg-white/10 backdrop-blur-xl
+         border border-white/20
+         shadow-lg shadow-black/20
+         ring-1 ring-white/10
+         text-black"
+>
+  <div class="flex items-center justify-between px-4">
+    <!-- Brand (Left) -->
+    <div class="text-2xl md:text-3xl font-semibold tracking-wide select-none">
+      <a routerLink="/"
+          routerLinkActive="active-link"><span>💡</span>Brainstorm</a>
+    </div>
+
+    <!-- Links (Right) -->
+    <ul class="flex items-center gap-6 md:gap-8">
+      <li>
+        <a
+          routerLink="/signin"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link"
+        >
+          Signin
+        </a>
+      </li>
+      <li class="">
+        <a
+          routerLink="/signup"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="text-black "
+        >
+          Signup
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="landing-container">
+  <!-- Hero Section -->
+<section class="max-w-6xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+  <!-- Left Content -->
+  <div class="flex flex-col gap-6">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight">
+      Collaborate, Innovate,
+      <span class="bg-linear-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">
+        Transform
+      </span>
+    </h1>
+
+    <p class="text-lg text-gray-500 leading-relaxed">
+      Empower your organization with a centralized idea collaboration platform.
+      Share ideas, gather feedback, and drive meaningful change.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div class="flex gap-4 mt-4">
+      <button
+        (click)="navigateTo('/signup')"
+        class="px-6 py-3 md:px-8 md:py-4 text-white font-semibold rounded-lg text-lg
+               bg-linear-to-r from-blue-600 to-blue-800
+               hover:shadow-xl hover:-translate-y-1 transition-all duration-200"
+      >
+        Start Free Now
+      </button>
+
+      <button
+        (click)="navigateTo('/signin')"
+        class="px-6 py-3 md:px-8 md:py-4 text-blue-600 font-semibold rounded-lg text-lg
+               border-2 border-blue-600 bg-white
+               hover:bg-blue-50 transition-all duration-200"
+      >
+        Sign In
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="flex gap-10 mt-8 pt-8 border-t border-gray-200">
+      <div class="flex flex-col">
+        <span class="text-2xl font-bold text-blue-600">1000+</span>
+        <span class="text-sm text-gray-500">Ideas Submitted</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-2xl font-bold text-blue-600">500+</span>
+        <span class="text-sm text-gray-500">Active Users</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-2xl font-bold text-blue-600">95%</span>
+        <span class="text-sm text-gray-500">Satisfaction Rate</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Illustration -->
+  <div class="flex justify-center items-center">
+    <div
+      class="w-87.5 h-87.5 rounded-2xl flex items-center justify-center text-7xl
+             bg-linear-to-br from-indigo-400 to-purple-500
+             shadow-2xl float-animation"
+    >
+      🚀
+    </div>
+  </div>
+
+</section>
 
 
-  <!-- Hero -->
-  <section class="section">
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 class="title">
-          Capture ideas.<br />
-          Collaborate.<br />
-          <span class="text-accent">Approve.</span>
-        </h1>
-        <p class="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300">
-          A focused internal board for submitting ideas, commenting, voting, and moving the best ones
-          through review &amp; approval—built for Employees, Managers, and Admins.
-        </p>
+  <!-- Features Section -->
+  <section class="features">
+    <div class="section-header">
+      <h2>Powerful Features for Everyone</h2>
+      <p>Everything you need to manage and collaborate on ideas</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💬</div>
+        <h3>Real-time Collaboration</h3>
+        <p>Discuss ideas with team members in real-time, gather feedback, and refine concepts together.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Advanced Analytics</h3>
+        <p>Track engagement metrics, view idea progress, and gain insights with comprehensive dashboards.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <h3>Secure & Reliable</h3>
+        <p>Your data is protected with enterprise-grade security and encrypted communications.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Recognition System</h3>
+        <p>Celebrate innovation with likes, comments, and recognition for outstanding ideas.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Mobile Ready</h3>
+        <p>Access the platform from anywhere, anytime on any device with full functionality.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <h3>Easy Integration</h3>
+        <p>Seamlessly integrate with your existing tools and workflows for maximum productivity.</p>
+      </div>
+    </div>
+  </section>
 
-        <div class="mt-6 flex flex-wrap gap-3">
-          <button class="btn primary" (click)="onGetStarted()">Submit an idea</button>
-          <button class="btn outline" (click)="onExplore()">Browse ideas</button>
-        </div>
-
-        <ul class="mt-6 flex flex-wrap gap-4 text-sm text-slate-600 dark:text-slate-300">
-          <li class="inline-flex items-center gap-2">
-            <span class="dot green"></span> In‑app notifications
-          </li>
-          <li class="inline-flex items-center gap-2">
-            <span class="dot accent"></span> Role‑based access
-          </li>
-          <li class="inline-flex items-center gap-2">
-            <span class="dot gray"></span> Audit logs
-          </li>
+  <!-- Roles Section -->
+  <section class="roles">
+    <div class="section-header">
+      <h2>Choose Your Role</h2>
+      <p>Select the role that matches your responsibilities</p>
+    </div>
+    <div class="roles-grid">
+      <div
+        *ngFor="let role of roles"
+        class="role-card"
+        [style]="'--role-color: ' + role.color"
+      >
+        <div class="role-icon">{{ role.icon }}</div>
+        <h3 class="role-title">{{ role.title }}</h3>
+        <p class="role-description">{{ role.description }}</p>
+        <ul class="role-features">
+          <li *ngFor="let feature of role.features">{{ feature }}</li>
         </ul>
-      </div>
-
-      <!-- Preview card -->
-      <div class="preview">
-        <div class="preview-header">
-          <div class="font-medium">Ideas</div>
-          <span class="badge accent">Live</span>
-        </div>
-
-        <div class="preview-item">
-          <div class="flex justify-between">
-            <div>
-              <div class="font-medium">Streamline onboarding</div>
-              <div class="text-sm text-slate-500 dark:text-slate-400">Productivity</div>
-            </div>
-            <div class="stat">
-              <span class="font-medium">24</span>
-            </div>
-          </div>
-          <div class="mt-3 flex items-center gap-2">
-            <span class="badge muted">UnderReview</span>
-            <button class="link" type="button">Comment</button>
-            <button class="link" type="button">Vote</button>
-          </div>
-        </div>
-
-        <div class="preview-item">
-          <div class="flex justify-between">
-            <div>
-              <div class="font-medium">Dark mode for dashboards</div>
-              <div class="text-sm text-slate-500 dark:text-slate-400">UX</div>
-            </div>
-            <div class="stat">
-              <span class="font-medium">12</span>
-            </div>
-          </div>
-          <div class="mt-3 flex items-center gap-2">
-            <span class="badge muted">Draft</span>
-            <button class="link" type="button">Comment</button>
-            <button class="link" type="button">Vote</button>
-          </div>
-        </div>
-
-        <div class="mt-4 flex justify-between items-center">
-          <button class="btn primary" type="button" (click)="onGetStarted()">Submit an idea</button>
-          <button class="btn outline" type="button">More</button>
-        </div>
+        <button
+          (click)="navigateTo(role.route)"
+          class="btn btn-role"
+          [style]="'--btn-color: ' + role.color"
+        >
+          {{ role.cta }}
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Core Modules -->
-  <section id="modules" class="section pt-8">
-    <h2 class="subtitle">Core Modules</h2>
-    <div class="mt-6 flex flex-wrap gap-3">
-      <span class="chip">User Management</span>
-      <span class="chip">Idea Submission &amp; Categorization</span>
-      <span class="chip">Collaboration &amp; Voting</span>
-      <span class="chip">Review &amp; Approval</span>
-      <span class="chip">Analytics &amp; Reporting</span>
-      <span class="chip">In‑App Notifications</span>
-    </div>
-  </section>
-
-  <!-- Workflow -->
-  <section id="workflow" class="bg-white border-y border-slate-200 dark:bg-slate-900 dark:border-slate-700">
-    <div class="section">
-      <h2 class="subtitle">Workflow</h2>
-           <div class="mt-6 grid sm:grid-cols-4 gap-4">
-        <div class="step">
-          <span class="step-dot" aria-hidden="true"></span>
-          <div>
-            <div class="font-semibold">Submit</div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Title, description, category, tags</p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-dot" aria-hidden="true"></span>
-          <div>
-            <div class="font-semibold">Collaborate</div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Comments &amp; votes</p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-dot" aria-hidden="true"></span>
-          <div>
-            <div class="font-semibold">Review</div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Feedback &amp; decision</p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-dot" aria-hidden="true"></span>
-          <div>
-            <div class="font-semibold">Approve</div>
-            <p class="text-sm text-slate-600 dark:text-slate-300">Move forward</p>
-          </div>
-        </div>
-      </div>
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Ready to Transform Your Organization?</h2>
+      <p>Join thousands of teams already using Brainstorm to drive innovation</p>
+      <button
+        (click)="navigateTo('/signup')"
+        class="btn btn-primary btn-lg btn-inverse"
+      >
+        Get Started for Free
+      </button>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-white dark:bg-slate-900 dark:border-slate-700">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between text-sm text-slate-600 dark:text-slate-300">
-      <div>© 2025 IdeaBoard • Internal</div>
-      <div class="flex gap-4">
-       <a> #faqFAQ</a>
-       <a> #Contact</a>
-        <a>#Privacy</a>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">About Brainstorm</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Security</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Status</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">GitHub</a></li>
+        </ul>
       </div>
     </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Brainstorm. All rights reserved.</p>
+    </div>
   </footer>
+
+  <!-- Decorative Background -->
+  <div class="background-decoration">
+    <div class="decoration-item decoration-1"></div>
+    <div class="decoration-item decoration-2"></div>
+    <div class="decoration-item decoration-3"></div>
+  </div>
+</div>

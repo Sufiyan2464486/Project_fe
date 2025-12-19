@@ -1,12 +1,47 @@
 import { Routes } from '@angular/router';
-import { SigninComponent } from '../components/signin/signin.component';
 import { AppComponent } from './app.component';
-import { SignupComponent } from '../components/signup/signup.component';
 import { Notfound404Component } from '../ui/notfound404/notfound404.component';
+import { LandingpageComponent } from '../components/landingpage/landingpage.component';
 
 export const routes: Routes = [
-  { path: 'home', component: AppComponent }, // Default route
-  { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: '**', component: Notfound404Component }, // Wildcard
+  {
+    path: '',
+    component: LandingpageComponent,
+  },
+
+  {
+    path: 'signin',
+    loadComponent: () =>
+      import('../components/signin/signin.component').then(
+        (m) => m.SigninComponent
+      ),
+  },
+  {
+    path: 'signup',
+    loadComponent: () =>
+      import('../components/signup/signup.component').then(
+        (m) => m.SignupComponent
+      ),
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('../roles/admin/admin.routes').then((m) => m.adminRoutes),
+  },
+  {
+    path: 'employee',
+    loadComponent: () =>
+      import('../roles/employee/employee.component').then(
+        (m) => m.EmployeeComponent
+      ),
+  },
+  {
+    path: 'manager',
+    loadComponent: () =>
+      import('../roles/manager/manager.component').then(
+        (m) => m.ManagerComponent
+      ),
+  },
+
+  { path: '**', component: Notfound404Component },
 ];
