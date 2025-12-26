@@ -29,7 +29,7 @@ export class AuthService {
         }
       }
     } catch {
-      
+
     }
   }
 
@@ -60,7 +60,6 @@ export class AuthService {
         window.localStorage.setItem('currentUser', JSON.stringify(user));
       }
     } catch {
-      
     }
   }
 
@@ -73,7 +72,6 @@ export class AuthService {
         typeof window.localStorage.removeItem === 'function'
       ) {
         window.localStorage.removeItem('currentUser');
-        
         window.localStorage.removeItem('auth');
       }
     } catch {
